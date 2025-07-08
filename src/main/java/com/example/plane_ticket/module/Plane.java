@@ -1,5 +1,6 @@
 package com.example.plane_ticket.module;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,6 +21,7 @@ public class Plane {
     private int id;
     private String name;
 
+    @JsonIgnore
     @OneToMany (mappedBy = "plane")
     private List<Seat> seat;
 }

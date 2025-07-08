@@ -1,6 +1,7 @@
 package com.example.plane_ticket.module;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +28,7 @@ public class Ticket {
     @JoinColumn (name = "seat_id")
     private Seat seat;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "booking_email")
     private Booking booking;

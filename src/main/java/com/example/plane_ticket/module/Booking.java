@@ -55,7 +55,4 @@
         @AssertTrue(message = "Bạn phải đồng ý với điều khoản")
         private boolean agreeTerms;
 
-        //Luu booking, cac ticket lquan cx se duoc luu
-        @OneToMany (mappedBy = "booking", cascade = CascadeType.ALL)
-        private List<Ticket> ticket;
     }
