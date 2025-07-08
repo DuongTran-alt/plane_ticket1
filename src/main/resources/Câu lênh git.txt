@@ -1,0 +1,21 @@
+Xây dựng API REST có chức năng đăng ký đặt vé máy bay, với các yêu cầu validate chi tiết.
+Yêu cầu chức năng: 
+- API /api/bookings (POST): cho phép người dùng đặt vé máy bay bằng cách gửi thông tin qua JSON.
+
+- Validate tất cả trường dữ liệu đầu vào bằng annotation.
+
+- Trả về lỗi rõ ràng nếu người dùng nhập sai định dạng.
+
+Entity: BookingRequest
+String fullName         Bắt buộc nhập, độ dài 3–50 ký tự
+String email        Bắt buộc và đúng định dạng email
+String phone        Bắt buộc và Phải đủ 10 chữ số
+int ticketQuantity        Phải chọn từ 1 đến 10 vé
+LocalDate birthDate         – Suy luận thử xem cần validate thế nào
+LocalDate flightDate         – Suy luận thử xem cần validate thế nào
+Boolean agreeTerms        – Bắt buộc phải đồng ý điều khoản
+
+- Bài luyện tập:
+Xây dựng API REST có chức năng lấy danh sách các yêu cầu đặt vé máy bay.
+Yêu cầu chức năng:
+- API /api/getall-bookings(POST): cho phép người dùng lấy danh sách các yêu cầu đặt vé, có sắp xếp theo flightDate, có lọc theo agreeTerms (true/false)
