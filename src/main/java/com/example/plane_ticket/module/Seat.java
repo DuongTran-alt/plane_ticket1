@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ticket_id")
+    @Column(name = "seat_id")
     private int id;
     private String type;
 
