@@ -33,12 +33,16 @@ public class BookingRequest {
 //    }
 
     public List<Booking> filterByFightDate(BookingFilterRequest request) {
+        //Lay yeu cau sap xep
         String sortDir = request.getSortFilter();
+        //Sort theo cot flightDate trong DB
         Sort sort = Sort.by("flightDate");
+        //Từ lớn đến nhỏ nếu trùng với DESC không thì ngược lại
         sort = "DESC".equalsIgnoreCase(sortDir) ? sort.descending() : sort.ascending();
 
+        //Xét nêú agreeTerm == null
         if (request.getAgreeTerms() == null) {
-            return repo.findAll(sort);
+            return null;
         }
 
         // Nếu lọc theo agreeTerms

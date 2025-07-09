@@ -24,7 +24,11 @@ public class BookingController {
 
     @PostMapping("/api/getall-bookings")
     public ResponseEntity<List<Booking>> getAllBooking(@Valid @RequestBody BookingFilterRequest bookingFilterRequest){
-        return ResponseEntity.ok(request.filterByFightDate(bookingFilterRequest));
+        if (request.filterByFightDate(bookingFilterRequest) == null){
+            return ResponseEntity.badRequest().build();
+        }
+        else
+            return ResponseEntity.ok(request.filterByFightDate(bookingFilterRequest));
     }
 
     @PostMapping("/api/bookings")
