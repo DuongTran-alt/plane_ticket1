@@ -29,8 +29,10 @@ public class BookingController {
 
     @PostMapping("/api/bookings")
     public ResponseEntity<String> addBooking(@Valid @RequestBody Booking booking){
-        request.addBooking(booking);
+        if (request.addBooking(booking))
         return ResponseEntity.status(HttpStatus.CREATED).body("Dat ve thanh cong");
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ve da bi dat");
     }
 
     //Khi một người dùng gửi request (POST/PUT...) kèm dữ liệu sai định dạng hoặc thiếu,

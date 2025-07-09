@@ -20,17 +20,17 @@ public class BookingRequest {
 
     public boolean addBooking(Booking booking) {
             // Giả sử kiểm tra xem ghế đã có người đặt chưa
-            if (isSeatTaken(booking)) {
-                return false;
-            }
+//            if (isSeatTaken(booking)) {
+//                return false;
+//            }
             repo.save(booking);
             return true;
     }
 
-    private boolean isSeatTaken(Booking booking) {
-            // Kiểm tra trong DB
-            return true;
-    }
+//    private boolean isSeatTaken(Booking booking) {
+//            // Kiểm tra trong DB
+//            return true;
+//    }
 
     public List<Booking> filterByFightDate(BookingFilterRequest request) {
         String sortDir = request.getSortFilter();
