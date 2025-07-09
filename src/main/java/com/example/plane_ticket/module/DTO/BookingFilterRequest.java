@@ -16,11 +16,8 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 @Builder
 public class BookingFilterRequest {
-    @Valid
 
-    @AssertTrue(message = "Bạn phải đồng ý với điều khoản")
     private Boolean agreeTerms;
 
-    @NotBlank (message = "Sap xep theo chieu nguoc hoac xuoi (ASC/DESC)")
     private String sortFilter = "ASC";
 }
