@@ -10,7 +10,6 @@
     import lombok.NoArgsConstructor;
 
     import java.time.LocalDate;
-    import java.util.List;
 
     @Data
     @NoArgsConstructor
@@ -28,16 +27,29 @@
 
         @Column(name = "booking_email")
         @Id
-        @NotNull(message = "Khong duoc de email")
         @NotBlank(message = "Khong duoc de email")
         @Email(message = "Phai dien đúng định dạng email")
         private String email;
 
-        @NotNull(message = "Ban chua dien so dien thoai")
+        //Dung cho string
+        //"" Khong hop le vi chuoi trong
+        @NotBlank(message = "Ban chua dien so dien thoai")
+        //Chi dung cho String
+        //@Pattern(regexp = "biểu_thức_chính_quy", message = "Thông báo khi sai định dạng")
+        //Thành phần	    Ý nghĩa
+        //^	                Bắt đầu chuỗi
+        //[\\p{L} ]	        Một tập hợp ký tự, cho phép:
+        //\\p{L}	        ✅ Bất kỳ chữ cái nào của bất kỳ ngôn ngữ nào (Latin, Việt, Nhật, v.v.)
+        //' ' (space)	    ✅ Khoảng trắng
+        //+	                Có ít nhất 1 ký tự hợp lệ trở lên
+        //$	                Kết thúc chuỗi
         @Pattern(regexp = "\\d{10}", message = "Số điện thoại phải đúng 10 chữ số")
         private String phone;
 
+        //Dung cho nhieu loai du lieu
+        //"" van hop le vi chuoi khong null
         @NotNull(message = "Khong duoc de trong so ve dat")
+        //Danh cho int, double, ...
         @Min(value = 1, message = "Phai dat tren 1 ve")
         @Max(value = 10, message = "Phai dat duoi 10 ve")
         private int ticketQuantity;

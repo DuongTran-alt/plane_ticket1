@@ -28,8 +28,8 @@ public class Ticket {
     @JoinColumn (name = "seat_id")
     private Seat seat;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "booking_email")
-    private Booking booking;
+//    @JsonIgnore
+//    @ManyToOne
+//    @JoinColumn(name = "booking_email")
+//    private Booking booking;
 }

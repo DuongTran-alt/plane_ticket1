@@ -1,6 +1,8 @@
 package com.example.plane_ticket.controller;
 
 import com.example.plane_ticket.module.Booking;
+import com.example.plane_ticket.module.DTO.BookingDTO;
+import com.example.plane_ticket.module.DTO.BookingFilterRequest;
 import com.example.plane_ticket.service.BookingRequest;
 import jakarta.validation.Valid;
 import org.apache.logging.log4j.message.Message;
@@ -21,15 +23,26 @@ public class BookingController {
     @Autowired
     private BookingRequest request;
 
-    @GetMapping("/booking")
-    public ResponseEntity<List<Booking>> getAllBooking(){
-        return ResponseEntity.ok(request.getAll());
+    @GetMapping("/api/search-bookings")
+    public ResponseEntity<List<BookingDTO>> getAllBooking(){
+        return ResponseEntity.ok(request.convertToDTO());
+    }
+
+    @PostMapping("/api/getall-bookings")
+    public ResponseEntity<List<BookingDTO>> getAllBooking(@Valid @RequestBody BookingFilterRequest bookingFilterRequest){
+        if (request.filterByFlightDate(bookingFilterRequest) == null){
+            return ResponseEntity.badRequest().build();
+        }
+        else
+            return ResponseEntity.ok(request.filterByFlightDate(bookingFilterRequest));
     }
 
     @PostMapping("/api/bookings")
-    public ResponseEntity<String> addBooking(@Valid @RequestBody Booking booking){
-        request.addBooking(booking);
+    public ResponseEntity<String> addBooking(@Valid @RequestBody BookingDTO dto){
+        if (request.addBooking(dto))
         return ResponseEntity.status(HttpStatus.CREATED).body("Dat ve thanh cong");
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ve da bi dat");
     }
 
     //Khi một người dùng gửi request (POST/PUT...) kèm dữ liệu sai định dạng hoặc thiếu,
