@@ -7,9 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.plane_ticket.module.DTO.BookingFilterRequest;
 import com.example.plane_ticket.repo.BookingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -78,7 +82,12 @@ public class BookingRequest {
             return repo.findByAgreeTermsOderByFlightDateDESC(request.getAgreeTerms()).stream().map(this::toDTO).collect(Collectors.toList());
         }
         else
-            return repo.findByAgreeTermsOderByFlightDateDESC(request.getAgreeTerms()).stream().map(this::toDTO).collect(Collectors.toList());
+            return repo.findByAgreeTermsOderByFlightDateASC(request.getAgreeTerms()).stream().map(this::toDTO).collect(Collectors.toList());
+    }
+    public Page<BookingDTO> searchBooking(int quantity, String name, LocalDate flightDate, String phone, int pageNo){
+        Pageable pageable = PageRequest.of(pageNo - 1, 5);
+        Page<Booking> bookingPage = repo.search(quantity, name, flightDate, phone, pageable);
+        return bookingPage.map(this::toDTO); // map Page -> Page
     }
 }
 
