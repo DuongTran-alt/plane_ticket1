@@ -84,7 +84,7 @@ public class BookingRequest {
         else
             return repo.findByAgreeTermsOderByFlightDateASC(request.getAgreeTerms()).stream().map(this::toDTO).collect(Collectors.toList());
     }
-    public Page<BookingDTO> searchBooking(int quantity, String name, LocalDate flightDate, String phone, int pageNo){
+    public Page<BookingDTO> searchBooking(Integer quantity, String name, LocalDate flightDate, String phone, int pageNo){
         Pageable pageable = PageRequest.of(pageNo - 1, 5);
         Page<Booking> bookingPage = repo.search(quantity, name, flightDate, phone, pageable);
         return bookingPage.map(this::toDTO); // map Page -> Page
