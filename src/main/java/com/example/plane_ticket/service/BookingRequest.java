@@ -84,8 +84,14 @@ public class BookingRequest {
         else
             return repo.findByAgreeTermsOderByFlightDateASC(request.getAgreeTerms()).stream().map(this::toDTO).collect(Collectors.toList());
     }
-    public Page<BookingDTO> searchBooking(int quantity, String name, LocalDate flightDate, String phone, int pageNo){
-        Pageable pageable = PageRequest.of(pageNo - 1, 5);
+    public Page<BookingDTO> searchBooking(Integer quantity, String name, LocalDate flightDate, String phone, Pageable pageable){
+//        String sortBy = "";
+//        String direction = "DESC";
+//        //Sắp xếp theo thứ tự từ lớn đêến bé hoặc lớn đến bé
+//        Sort sort = direction.equalsIgnoreCase("DESC")
+//                //Sắp xếp theo cột (sortBy)
+//                ? Sort.by(sortBy).descending()
+//                : Sort.by(sortBy).ascending();
         Page<Booking> bookingPage = repo.search(quantity, name, flightDate, phone, pageable);
         return bookingPage.map(this::toDTO); // map Page -> Page
     }

@@ -9,6 +9,7 @@ import org.apache.logging.log4j.message.Message;
 import org.hibernate.validator.constraints.ParameterScriptAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -27,8 +28,8 @@ public class BookingController {
 
     @GetMapping("/api/search-bookings")
     //@RequestParam de cho nguoi dung nhap tham so dau vao, required false khien khi nguoi dung khong nhap gia tri gi thi no cho la null
-    public ResponseEntity<Page<BookingDTO>> getAllBooking(@RequestParam(name = "ticketQuantity",required = false) int quantity, @RequestParam(name = "fullName",required = false) String fullName, @RequestParam(name = "flightDate",required = false) LocalDate flightDate, @RequestParam(name = "phone", required = false) String phone, @RequestParam(name = "pageNo") int pageNo){
-        return ResponseEntity.ok(request.searchBooking(quantity,fullName,flightDate,phone,pageNo));
+    public ResponseEntity<Page<BookingDTO>> getAllBooking(@RequestParam(name = "ticketQuantity",required = false) Integer quantity, @RequestParam(name = "fullName",required = false) String fullName, @RequestParam(name = "flightDate",required = false) LocalDate flightDate, @RequestParam(name = "phone", required = false) String phone, Pageable pageable){
+        return ResponseEntity.ok(request.searchBooking(quantity,fullName,flightDate,phone,pageable));
     }
 
     @PostMapping("/api/getall-bookings")
