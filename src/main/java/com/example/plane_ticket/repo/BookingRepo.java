@@ -24,6 +24,6 @@ public interface BookingRepo extends JpaRepository<Booking,Integer> {
     //b.ticketQuantity = :quantity se giong voi gia tri trong value
     //(b.ticketQuantity = :quantity or :quantity is null) De cho cau lenh van dung khi ma khong nhap gia tri cho bien
     // -> Cau lenh van thuc hien duoc
-    @Query(value = "select b from Booking b where  (b.ticketQuantity = :quantity or :quantity is null) and (b.fullName like %:name% or :name is null) and (b.flightDate = :flightDate or :flightDate is null) and (b.phone = :phone or :phone is null )",countQuery = "select count(b) from Booking b where  (b.ticketQuantity = :quantity or :quantity is null) and (b.fullName like %:name% or :name is null) and (b.flightDate = :flightDate or :flightDate is null) and (b.phone = :phone or :phone is null )",nativeQuery = true)
+    @Query(value = "select b from Booking b where  (b.ticketQuantity = :quantity or :quantity is null) and (b.fullName like %:name% or :name is null) and (b.flightDate = :flightDate or :flightDate is null) and (b.phone = :phone or :phone is null )",countQuery = "select count(b) from Booking b where  (b.ticketQuantity = :quantity or :quantity is null) and (b.fullName like %:name% or :name is null) and (b.flightDate = :flightDate or :flightDate is null) and (b.phone = :phone or :phone is null )")
     Page<Booking> search(@Param(value = "quantity") int ticketQuantity, @Param(value = "name") String name, @Param(value = "flightDate") LocalDate flightDate, @Param(value = "phone") String phone, Pageable pageable);
 }
