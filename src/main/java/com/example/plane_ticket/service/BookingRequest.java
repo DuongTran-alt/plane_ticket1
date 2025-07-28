@@ -1,20 +1,15 @@
 package com.example.plane_ticket.service;
 
-import com.example.plane_ticket.module.Booking;
-import com.example.plane_ticket.module.DTO.BookingDTO;
+import com.example.plane_ticket.model.Booking;
+import com.example.plane_ticket.model.DTO.BookingDTO;
 import com.example.plane_ticket.repo.BookingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.example.plane_ticket.module.DTO.BookingFilterRequest;
-import com.example.plane_ticket.repo.BookingRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.plane_ticket.model.DTO.BookingFilterRequest;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

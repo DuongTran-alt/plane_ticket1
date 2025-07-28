@@ -1,13 +1,10 @@
 package com.example.plane_ticket.repo;
-import com.example.plane_ticket.module.Booking;
+import com.example.plane_ticket.model.Booking;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -28,4 +25,5 @@ public interface BookingRepo extends JpaRepository<Booking,Integer> {
     // int khong nhan null ma cho default = 0
     @Query(value = "select b from Booking b where  (b.ticketQuantity = :quantity or :quantity is null) and (b.fullName like %:name% or :name is null) and (b.flightDate = :flightDate or :flightDate is null) and (b.phone = :phone or :phone is null )",countQuery = "select count(b) from Booking b where  (b.ticketQuantity = :quantity or :quantity is null) and (b.fullName like %:name% or :name is null) and (b.flightDate = :flightDate or :flightDate is null) and (b.phone = :phone or :phone is null )")
     Page<Booking> search(@Param(value = "quantity") Integer ticketQuantity, @Param(value = "name") String name, @Param(value = "flightDate") LocalDate flightDate, @Param(value = "phone") String phone, Pageable pageable);
+    Booking findByFullName (String fullName);
 }

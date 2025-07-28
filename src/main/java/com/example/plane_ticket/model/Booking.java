@@ -1,4 +1,4 @@
-    package com.example.plane_ticket.module;
+    package com.example.plane_ticket.model;
 
     import com.fasterxml.jackson.annotation.JsonFormat;
     import jakarta.persistence.*;
@@ -10,6 +10,7 @@
     import lombok.NoArgsConstructor;
 
     import java.time.LocalDate;
+    import java.util.List;
 
     @Data
     @NoArgsConstructor

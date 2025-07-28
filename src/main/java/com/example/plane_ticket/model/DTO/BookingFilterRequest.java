@@ -1,9 +1,5 @@
-package com.example.plane_ticket.module.DTO;
+package com.example.plane_ticket.model.DTO;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.AssertTrue;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

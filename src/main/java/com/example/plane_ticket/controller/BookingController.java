@@ -1,18 +1,14 @@
 package com.example.plane_ticket.controller;
 
-import com.example.plane_ticket.module.Booking;
-import com.example.plane_ticket.module.DTO.BookingDTO;
-import com.example.plane_ticket.module.DTO.BookingFilterRequest;
+import com.example.plane_ticket.model.DTO.BookingDTO;
+import com.example.plane_ticket.model.DTO.BookingFilterRequest;
 import com.example.plane_ticket.service.BookingRequest;
 import jakarta.validation.Valid;
-import org.apache.logging.log4j.message.Message;
-import org.hibernate.validator.constraints.ParameterScriptAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
